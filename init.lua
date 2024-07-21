@@ -18,7 +18,7 @@ require("lazy").setup({
   {
     "feileo/nvim-core",
     lazy = false,
-    branch = "v2.5",
+    branch = "main",
     import = "nvchad.plugins",
     config = function()
       require "options"
