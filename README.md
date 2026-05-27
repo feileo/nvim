@@ -71,6 +71,7 @@ nvim
 | [interestingwords.nvim](https://github.com/leisiji/interestingwords.nvim) | 多词高亮 |
 | [better-escape.nvim](https://github.com/max397574/better-escape.nvim) | 快速退出 insert 模式 |
 | [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim) | 缩进参考线 |
+| [flash.nvim](https://github.com/folke/flash.nvim) | 快速跳转（字符标签 + treesitter 节点） |
 
 ## LSP 支持
 
@@ -210,6 +211,14 @@ g.go_highlight_variable_declarations = 0
 | `<leader>t` + motion | 翻译 motion 范围（→ zh-CN） |
 | `<leader>tt` | 翻译当前行 |
 | `<leader>t`（visual） | 翻译选中内容 |
+
+### 跳转（flash.nvim）
+
+| 快捷键 | 功能 |
+|--------|------|
+| `s` | 输入字符，标签跳转到任意位置 |
+| `S` | treesitter 节点跳转 |
+| `<C-s>`（搜索中） | 在 `/` 搜索时激活 flash 标签 |
 
 ### 其他
 

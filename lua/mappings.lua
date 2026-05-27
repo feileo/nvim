@@ -114,3 +114,6 @@ map("n", "<A-I>", "<cmd>Interestingwords --remove_all<CR>", { desc = "interestin
 map("n", "<leader>t", function() return require("pantran").motion_translate() end, { expr = true, noremap = true, desc = "translate motion" })
 map("n", "<leader>tt", function() return require("pantran").motion_translate() .. "_" end, { expr = true, noremap = true, desc = "translate line" })
 map("x", "<leader>t", function() return require("pantran").motion_translate() end, { expr = true, noremap = true, desc = "translate selection" })
+
+-- flash: toggle labels during native search (press <C-s> while in / search)
+map("c", "<C-s>", function() require("flash").toggle() end, { desc = "flash toggle search" })

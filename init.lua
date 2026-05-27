@@ -33,25 +33,6 @@ require "autocmds"
 dofile(vim.g.base46_cache .. "defaults")
 dofile(vim.g.base46_cache .. "statusline")
 
--- 应用自定义高亮配置（Apply custom highlights）
 vim.schedule(function()
-  -- local ok, highlightsts = pcall(require, "highlightsts")
-  -- if ok and highlightsts then
-  --   if highlightsts.override then
-  --     for hl_group, hl_opts in pairs(highlightsts.override) do
-  --       vim.api.nvim_set_hl(0, hl_group, hl_opts)
-  --     end
-  --   end
-  -- end
-
-  -- local ok, highlightsrg = pcall(require, "highlights")
-  -- if ok and highlightsrg then
-  --   if highlightsrg.add then
-  --     for hl_group, hl_opts in pairs(highlightsrg.add) do
-  --       vim.api.nvim_set_hl(0, hl_group, hl_opts)
-  --     end
-  --   end
-  -- end
-
   require "mappings"
 end)
