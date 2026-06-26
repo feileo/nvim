@@ -3,20 +3,15 @@ local default_config = require "nvchad.configs.cmp"
 local cmp = require "cmp"
 local luasnip = require "luasnip"
 
--- 优先 cmp，其次 supermaven，最后 luasnip
+-- Tab: 优先 supermaven，其次 luasnip；cmp 走 C-n/C-p + CR
 local function tab_complete(fallback)
   local suggestion = require "supermaven-nvim.completion_preview"
-
-  -- 1. 如果 cmp 菜单可见，选择下一项
-  if cmp.visible() then
-    cmp.select_next_item()
-    -- 2. 如果有 supermaven 建议，接受建议
-  elseif suggestion.has_suggestion() then
-    suggestion.on_accept_suggestion()
-    -- 3. 如果 luasnip 可以展开或跳转
+  if suggestion.has_suggestion() then
+    vim.schedule(function()
+      suggestion.on_accept_suggestion()
+    end)
   elseif luasnip.expand_or_jumpable() then
     luasnip.expand_or_jump()
-    -- 4. 否则使用默认 Tab 行为
   else
     fallback()
   end
@@ -32,13 +27,20 @@ local function shift_tab_complete(fallback)
   end
 end
 
--- 覆盖 Tab 键配置
 local config = {
   mapping = {
     ["<Tab>"] = cmp.mapping(tab_complete, { "i", "s" }),
     ["<S-Tab>"] = cmp.mapping(shift_tab_complete, { "i", "s" }),
     ["<C-c>"] = cmp.mapping.close(),
   },
+  sources = cmp.config.sources({
+    { name = "nvim_lsp", priority = 1000 },
+    { name = "luasnip", priority = 750 },
+    { name = "nvim_lua", priority = 500 },
+    { name = "async_path", priority = 300 },
+  }, {
+    { name = "buffer", priority = 200 },
+  }),
 }
 
 return vim.tbl_deep_extend("force", default_config, config)

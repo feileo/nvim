@@ -2,7 +2,7 @@ local opts = {
   keymaps = {
     accept_suggestion = nil,    -- Tab 键由 cmp.lua 统一管理
     clear_suggestion = "<C-]>", -- Ctrl+] 清除建议
-    accept_word = "<C-k>",      -- Ctrl+k 接受一个单词
+    accept_word = "<C-l>",      -- Ctrl+l 接受一个单词
   },
   ignore_filetypes = {
     "TelescopePrompt",
